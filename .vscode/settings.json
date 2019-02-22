@@ -1,12 +1,12 @@
 {
     "explorer.openEditors.visible": 0,
-    "editor.fontSize": 15,
+    "editor.fontSize": 16,
     "editor.fontLigatures": true,
     "files.autoSave": "onFocusChange",
     "typescript.check.npmIsInstalled": true,
     "editor.snippetSuggestions": "top",
     "workbench.editor.labelFormat": "long",
-    "editor.lineHeight": 16,
+    "editor.lineHeight": 17,
     "editor.minimap.enabled": false,
 
     "window.zoomLevel": 0,
