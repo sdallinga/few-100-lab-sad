@@ -6,7 +6,7 @@
     "typescript.check.npmIsInstalled": true,
     "editor.snippetSuggestions": "top",
     "workbench.editor.labelFormat": "long",
-    "editor.lineHeight": 28,
+    "editor.lineHeight": 16,
     "editor.minimap.enabled": false,
 
     "window.zoomLevel": 0,

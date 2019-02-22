@@ -1,15 +1,33 @@
+body {
+    background-color: darkgray
+}
+
 h1 {
-    color:red;
+    color: green;
+    margin-left: 10 px;
 }
 
 h3 {
-    color: grey
+    color: white;
+    margin-left: 10 px;
 }
 
 [dollarAmountGroup] {
-    width: 30%;
+    width: 40%;
+    margin-left: 10px;
 }
 
 [tipPercentGroup] {
     width: 40%;
+}
+div[everything]
+
+.btn {
+    background-color: white;
+
+}
+
+.btn:disabled {
+    background-color: green;
+    color: white;
 }
