@@ -3,13 +3,14 @@ import { ready } from './utils';
 
 ready(() => {
 	initialize_page();
-	console.log('Ready to Party');
 });
+
+var tipPercentage: number = 0;
 
 function initialize_page() {
 
 	setButtonDefaults();
-	cofigureEventListeners();
+	configureEventListeners();
 }
 
 function setButtonDefaults() {
@@ -23,6 +24,7 @@ function setButtonDefaults() {
 
 function setTippingMessage(btn: HTMLElement) {
 	document.getElementById("hdrPercentage").innerText = "Tip Percentage: " + btn.innerText;
+	tipPercentage = Number(btn.innerText.replace('%',''));
 }
 
 function enableAllButtons() {
@@ -38,6 +40,7 @@ function buttonClickEvent(e: Event) {
 
 	this.setAttribute('disabled', '');
 	setTippingMessage(this);
+	UpdateOutput();
 }
 
 
@@ -47,7 +50,6 @@ function keyDownEvent(e: KeyboardEvent): boolean {
 	// Also allow comma, period, and negative sign.
 
 	const key: string = e.key;
-	console.log("key down:  " + e.key);
 
 	switch (key) {
 		case '0':
@@ -94,12 +96,28 @@ function onChangeEvent(this: HTMLInputElement, e: Event)
 	{
 		this.style.borderColor = '';
 	}
+	
+	UpdateOutput();
+}
 
+function UpdateOutput()
+{
+	const sub: HTMLInputElement = <HTMLInputElement>document.getElementById("billSubtotal");
+	const tot: HTMLInputElement = <HTMLInputElement>document.getElementById("billTotal");
+
+	const billSubtotal: number = Number(sub.value);
+	const billTotal: number = Number(tot.value);
+
+	const tip: number = billSubtotal * tipPercentage/100;
+	const grandTotal: number = billTotal + tip;
+
+	document.getElementById("tipAmount").innerText = "Tip Amount: $" + tip;
+	document.getElementById("grandTotal").innerText = "Bill Total + Tip: $" + grandTotal;
 }
 
 
 
-function cofigureEventListeners() {
+function configureEventListeners() {
 
 	const btnList: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
 	for (var i = 0; i < btnList.length; i++) {
@@ -114,8 +132,5 @@ function cofigureEventListeners() {
 	for (var i = 0; i < inputList.length; i++) {
 		inputList[i].addEventListener('change', onChangeEvent);
 	}
-
-
-
 }
 
