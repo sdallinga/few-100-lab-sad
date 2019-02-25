@@ -1,5 +1,5 @@
 import './styles.css';
-import { ready } from './utils';
+import { ready, roundToTwoPlaces } from './utils';
 
 ready(() => {
 	initialize_page();
@@ -24,7 +24,7 @@ function setButtonDefaults() {
 
 function setTippingMessage(btn: HTMLElement) {
 	document.getElementById("hdrPercentage").innerText = "Tip Percentage: " + btn.innerText;
-	tipPercentage = Number(btn.innerText.replace('%',''));
+	tipPercentage = Number(btn.innerText.replace('%', ''));
 }
 
 function enableAllButtons() {
@@ -81,41 +81,39 @@ function keyDownEvent(e: KeyboardEvent): boolean {
 	}
 }
 
-function onChangeEvent(this: HTMLInputElement, e: Event)
-{
+function onChangeEvent(this: HTMLInputElement, e: Event) {
 
 	var numVal: number = Number(this.value);
-	if(isNaN(numVal)) {
+	if (isNaN(numVal)) {
 		numVal = 0;
 	}
+	else {
+		this.value = roundToTwoPlaces(Number(this.value));
+	}
 
-	if( numVal < 0) {
+	if (numVal < 0) {
 		this.style.borderColor = 'Red';
 	}
-	else
-	{
+	else {
 		this.style.borderColor = '';
 	}
-	
+
 	UpdateOutput();
 }
 
-function UpdateOutput()
-{
+function UpdateOutput() {
 	const sub: HTMLInputElement = <HTMLInputElement>document.getElementById("billSubtotal");
 	const tot: HTMLInputElement = <HTMLInputElement>document.getElementById("billTotal");
 
 	const billSubtotal: number = Number(sub.value);
 	const billTotal: number = Number(tot.value);
 
-	const tip: number = billSubtotal * tipPercentage/100;
-	const grandTotal: number = billTotal + tip;
+	const tip: string = roundToTwoPlaces(billSubtotal * tipPercentage / 100);
+	const grandTotal: string = roundToTwoPlaces(billTotal + (billSubtotal * tipPercentage / 100));
 
 	document.getElementById("tipAmount").innerText = "Tip Amount: $" + tip;
 	document.getElementById("grandTotal").innerText = "Bill Total + Tip: $" + grandTotal;
 }
-
-
 
 function configureEventListeners() {
 
