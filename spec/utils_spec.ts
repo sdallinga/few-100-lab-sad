@@ -14,4 +14,7 @@ describe('Tests for roundToTwoPlaces function', () => {
 		expect(roundToTwoPlaces(2.345)).toEqual('2.35');
 	});
 
+	it('Should append .00 for even dollar amounts', () => {
+		expect(roundToTwoPlaces(56)).toEqual('56.00');
+	});
 });
