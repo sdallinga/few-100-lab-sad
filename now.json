@@ -1,5 +1,8 @@
 {
     "version": 2,
     "name": "Tip-u-lator",
-    "public": true
+    "builds": [
+        { "src": "static/**", "use": "@now/static" },
+        { "src": "typescript/src/**/*.ts", "use": "@now/node@canary" }
+    ]
  }
