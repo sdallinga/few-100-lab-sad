@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "Tip-u-lator",
+    "public": true,
+    "github": {
+        "enabled": true
+    }
+}
