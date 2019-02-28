@@ -1,2 +1,5 @@
 node_modules
 dist
+spec
+karma.config.js
+.vscode
