@@ -1,6 +1,9 @@
 {
     "version": 2,
     "name": "Tip-u-lator",
+    "builds": [
+        {"src": "package.json", "use": "@now/static-build", "config": {"distDir": "public"} }
+    ],
     "public": true,
     "github": {
         "enabled": true
