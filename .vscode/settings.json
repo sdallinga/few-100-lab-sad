@@ -11,7 +11,7 @@
 
     "window.zoomLevel": 0,
     "git.enableSmartCommit": true,
-    "git.autofetch": true,
+    "git.autofetch": false,
     "workbench.colorCustomizations": {
         "editorIndentGuide.activeBackground": "#ff0000"
     },
