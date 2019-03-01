@@ -2,7 +2,10 @@
     "version": 2,
     "name": "Tip-u-lator",
     "builds": [
-        { "src": "static/**", "use": "@now/static" },
-        { "src": "typescript/src/**/*.ts", "use": "@now/node@canary" }
-    ]
+        { "src": "**", "use": "@now/static" },
+        { "src": "*.ts", "use": "@now/node@canary" }
+    ],
+    "github": {
+        "enabled": true
+    }
  }
